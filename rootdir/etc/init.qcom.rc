@@ -40,12 +40,13 @@ on early-boot
 
 on early-init
     # for backwards compatibility
-    export EXTERNAL_STORAGE /storage/sdcard0
+    export INTERNAL_STORAGE /storage/sdcard0
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
-    symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard0 /mnt/sdcard
-
+    export EXTERNAL_STORAGE /sdcard
+    mkdir /sdcard
+    symlink /sdcard /mnt/sdcard
+    
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
