@@ -292,6 +292,12 @@ service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -n
     group bluetooth net_bt_admin misc net_bt_stack
     disabled
 
+service bttest /system/xbin/bttest dut
+    class late_start
+    user root
+    disabled
+    oneshot
+
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user root
