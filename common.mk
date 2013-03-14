@@ -406,6 +406,10 @@ VT_JNI := libvt_jni
 #Synaptics TP firmware
 SYNAPTICS_TP_FW := synaptics_s3202.img
 SYNAPTICS_TP_FW += synaptics_fw_version_s3202
+SYNAPTICS_TP_FW := synaptics_s7020.img
+SYNAPTICS_TP_FW += synaptics_fw_version_s7020
+SYNAPTICS_TP_FW := synaptics_s7300.img
+SYNAPTICS_TP_FW += synaptics_fw_version_s7300
 SYNAPTICS_TP_FW += synaptics_ts_update.sh
 
 PRODUCT_PACKAGES := \
