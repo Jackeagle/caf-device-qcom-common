@@ -34,17 +34,24 @@
 # User needs to set unique usb serial number to persist.usb.serialno
 #
 serialno=`getprop persist.usb.serialno`
-case "$serialno" in
-    "")
-    serialnum=`getprop ro.serialno`
-    case "$serialnum" in
-        "");; #Do nothing, use default serial number
-        *)
-        echo "$serialnum" > /sys/class/android_usb/android0/iSerial
-    esac
+factorymode=`getprop persist.init.factory.mode`
+case "$factorymode" in
+    "1")
+    echo "QRD_8x30" > /sys/class/android_usb/android0/iSerial
     ;;
     *)
-    echo "$serialno" > /sys/class/android_usb/android0/iSerial
+    case "$serialno" in
+        "")
+        serialnum=`getprop ro.serialno`
+        case "$serialnum" in
+            "");; #Do nothing, use default serial number
+            *)
+            echo "$serialnum" > /sys/class/android_usb/android0/iSerial
+        esac
+        ;;
+        *)
+        echo "$serialno" > /sys/class/android_usb/android0/iSerial
+    esac
 esac
 
 chown root.system /sys/devices/platform/msm_hsusb/gadget/wakeup
@@ -120,7 +127,16 @@ case "$usb_config" in
             ;;
         esac
     ;;
-    * ) ;; #USB persist config exists, do nothing
+    * )
+        case "$factorymode" in
+            "1")
+                setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+            ;;
+            *)
+                setprop persist.sys.usb.config mtp,diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+            ;;
+        esac
+    ;;
 esac
 
 #

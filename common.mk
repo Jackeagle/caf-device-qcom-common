@@ -133,6 +133,7 @@ INIT += init.qcom.fm.sh
 INIT += init.qcom.early_boot.sh
 INIT += init.qcom.post_boot.sh
 INIT += init.qcom.syspart_fixup.sh
+INIT += init.factory.mode.sh
 INIT += init.qcom.rc
 INIT += init.qcom.sdio.sh
 INIT += init.qcom.sh
