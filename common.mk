@@ -404,11 +404,6 @@ CHARGER += charger_res_images
 #VT_JNI
 VT_JNI := libvt_jni
 
-#Synaptics TP firmware
-SYNAPTICS_TP_FW := synaptics_s3202.img
-SYNAPTICS_TP_FW += synaptics_fw_version_s3202
-SYNAPTICS_TP_FW += synaptics_ts_update.sh
-
 PRODUCT_PACKAGES := \
     AccountAndSyncSettings \
     DeskClock \
@@ -497,7 +492,7 @@ PRODUCT_PACKAGES += $(UPDATER)
 PRODUCT_PACKAGES += $(WPA)
 PRODUCT_PACKAGES += $(ZLIB)
 PRODUCT_PACKAGES += $(VT_JNI)
-PRODUCT_PACKAGES += $(SYNAPTICS_TP_FW)
+
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
