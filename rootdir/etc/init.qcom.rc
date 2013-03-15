@@ -235,6 +235,11 @@ on property:bluetooth.isEnabled=true
     start btwlancoex
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
+service factory_mode /system/bin/sh /etc/init.factory.mode.sh
+    class core
+    user root
+    oneshot
+
 service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
     class core
     user root
