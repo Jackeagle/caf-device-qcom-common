@@ -655,3 +655,9 @@ on property:persist.sys.ssr.restart_level=1
     write /sys/module/subsystem_restart/parameters/restart_level 1
 on property:persist.sys.ssr.restart_level=3
     write /sys/module/subsystem_restart/parameters/restart_level 3
+
+# listen to property to set HDMI sysfs 
+on property:persist.sys.hdmi.enable=1
+    write /sys/devices/platform/hdmi_msm.1/online 1
+on property:persist.sys.hdmi.enable=0
+    write /sys/devices/platform/hdmi_msm.1/online 0
