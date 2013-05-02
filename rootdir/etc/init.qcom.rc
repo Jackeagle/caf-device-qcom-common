@@ -663,3 +663,9 @@ on property:persist.sys.hdmi.enable=1
     write /sys/devices/platform/hdmi_msm.1/online 1
 on property:persist.sys.hdmi.enable=0
     write /sys/devices/platform/hdmi_msm.1/online 0
+
+#shian add, for download mode setting
+on property:persist.sys.downloadmode=1
+    write /sys/module/restart/parameters/download_mode 1
+on property:persist.sys.downloadmode=0
+    write /sys/module/restart/parameters/download_mode 0
