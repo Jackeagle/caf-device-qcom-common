@@ -666,6 +666,6 @@ on property:persist.sys.hdmi.enable=0
 
 #shian add, for download mode setting
 on property:persist.sys.downloadmode=1
-    write /sys/module/restart/parameters/download_mode 1
+    write /sys/module/restart/parameters/download_mode ${ro.debuggable}
 on property:persist.sys.downloadmode=0
     write /sys/module/restart/parameters/download_mode 0
