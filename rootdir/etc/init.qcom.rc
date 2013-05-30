@@ -665,3 +665,9 @@ on property:persist.radio.sglte_csfb=true
     kill qmiproxy 15
 on property:persist.radio.sglte_csfb=false
     kill qmiproxy 15
+
+# listen to property to set HDMI sysfs 
+on property:persist.sys.hdmi.enable=1
+    write /sys/devices/platform/hdmi_msm.1/online 1
+on property:persist.sys.hdmi.enable=0
+    write /sys/devices/platform/hdmi_msm.1/online 0
