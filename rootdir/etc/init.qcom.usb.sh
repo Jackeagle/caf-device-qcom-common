@@ -93,6 +93,7 @@ esac
 baseband=`getprop ro.baseband`
 echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 usb_config=`getprop persist.sys.usb.config`
+build_type=`getprop ro.build.type`
 case "$usb_config" in
     "" | "adb") #USB persist config not set, select default configuration
         case $target in
@@ -105,7 +106,14 @@ case "$usb_config" in
                          setprop persist.sys.usb.config diag,diag_mdm,serial_smd,serial_tty,serial_hsuart,rmnet_hsuart,mass_storage,adb
                     ;;
                     *)
-                         setprop persist.sys.usb.config mtp,diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+                        case $build_type in
+                            "user")
+                                setprop persist.sys.usb.config mtp,diag,serial_smd,serial_tty,rmnet_bam,mass_storage
+                            ;;
+                            *)
+                                setprop persist.sys.usb.config mtp,diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+                            ;;
+                        esac
                     ;;
                 esac
             ;;
