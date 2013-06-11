@@ -188,6 +188,7 @@ case "$config" in
     "onboot")
         program_bdaddr
         config_bt
+        chmod 666 /persist/.bt_nv.bin
         exit 0
         ;;
     *)
