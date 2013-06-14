@@ -43,7 +43,6 @@ on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
-    mkdir /storage/sdcard1 0000 system system
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
 
@@ -609,6 +608,14 @@ service sdcard /system/bin/sdcard /data/media 1023 1023
 
 on property:persist.sys.emmcpartition=0
     setprop persist.sys.emmcsdcard.enabled 0
+
+on property:persist.sys.emmcsdcard.enabled=0
+    setprop persist.fuse_sdcard false
+    setprop ro.fuse_sdcard false
+
+on property:persist.sys.emmcsdcard.enabled=1
+    setprop persist.fuse_sdcard true
+    setprop ro.fuse_sdcard true
 
 on property:ro.fuse_sdcard=true
     start sdcard
