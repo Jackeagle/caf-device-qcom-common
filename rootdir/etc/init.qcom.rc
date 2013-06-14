@@ -606,15 +606,6 @@ service sdcard /system/bin/sdcard /data/media 1023 1023
     class late_start
     disabled
 
-on property:persist.sys.emmcpartition=0
-    setprop persist.sys.emmcsdcard.enabled 0
-    setprop persist.fuse_sdcard false
-    setprop ro.fuse_sdcard false
-
-on property:persist.sys.emmcsdcard.enabled=1
-    setprop persist.fuse_sdcard true
-    setprop ro.fuse_sdcard true
-
 on property:ro.fuse_sdcard=true
     start sdcard
 
