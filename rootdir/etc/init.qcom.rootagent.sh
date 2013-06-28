@@ -36,7 +36,7 @@ action=${value[0]} # 0 based
 doAction=""
 
 # Autotrigger functions
-ROOT_AUTOTRIGGER_PATH="/sdcard/logs/autotrigger"
+ROOT_AUTOTRIGGER_PATH="/storage/sdcard1/logs/autotrigger"
 function Preprocess(){
 rm -r $ROOT_AUTOTRIGGER_PATH
 mkdir -p $ROOT_AUTOTRIGGER_PATH
