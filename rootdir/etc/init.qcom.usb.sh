@@ -108,11 +108,12 @@ case "$usb_config" in
                     *)
                         case $build_type in
                             "user")
-                                setprop persist.sys.usb.config mtp,diag,serial_smd,serial_tty,rmnet_bam,mass_storage
+                                setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+
                             ;;
                             *)
-                                setprop persist.sys.usb.config mtp,diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
-                            ;;
+                                setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+                            ;;                                 
                         esac
                     ;;
                 esac
@@ -141,7 +142,7 @@ case "$usb_config" in
                 setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
             ;;
             *)
-                setprop persist.sys.usb.config mtp,diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+                setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
             ;;
         esac
     ;;
