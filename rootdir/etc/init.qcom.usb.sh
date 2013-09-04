@@ -95,7 +95,7 @@ echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 usb_config=`getprop persist.sys.usb.config`
 build_type=`getprop ro.build.type`
 case "$usb_config" in
-    "" | "adb") #USB persist config not set, select default configuration
+    "" | "adb" | "mass_storage,adb") #USB persist config not set, select default configuration
         case $target in
             "msm8960" | "msm8974")
                 case "$baseband" in
@@ -142,7 +142,7 @@ case "$usb_config" in
                 setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
             ;;
             *)
-                if [ "$usb_config" == "diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb"]; then
+                if [ "$usb_config" == "diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb" ]; then
                     setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,adb
                 fi
             ;;
